@@ -1,0 +1,31 @@
+{% set version = "b2f27b6" %}
+
+package:
+  name: bigdatascript
+  version: {{ version }}
+
+source:
+  fn: BigDataScript-{{ version }}.zip
+  url: https://github.com/pcingola/BigDataScript/archive/{{ version }}.zip
+  md5: 65d4fc500e85ae50f9fa9b9fcf736b3a
+
+build:
+  number: 0
+  skip: False
+
+requirements:
+  build:
+    - openjdk >=8
+    - ant
+    # - golang
+  run:
+    - openjdk >=8
+
+test:
+  commands:
+    - "bds -version 2>&1 | grep Bds"
+
+about:
+  home: "http://pcingola.github.io/BigDataScript"
+  license: Apache 2.0
+  summary: "A simple script-language for 'Big Data' piplines."
