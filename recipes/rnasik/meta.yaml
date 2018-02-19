@@ -1,0 +1,40 @@
+{% set version = "1.4.8" %}
+
+package:
+  name: rnasik
+  version: {{ version }}
+
+source:
+  fn: rnasik.zip
+  url: https://github.com/MonashBioinformaticsPlatform/RNAsik-pipe/archive/1.4.8.zip
+  sha256: 8dfe1e66bbd70c13b5635d83eee260af4b07332a132abdf29a36c99143557ed3
+
+build:
+  number: 0
+  skip: False
+
+requirements:
+  run:
+    - bigdatascript  # pansapiens/bigdatascript
+    - openjdk >=8
+    - python
+    - STAR
+    - bwa
+    - hisat2
+    - bedtools
+    - picard
+    - samtools
+    - subread
+    - qualimap
+    - htslib
+    - fastqc
+    - multiqc
+
+test:
+  commands:
+    - "RNAsik 2>&1 | grep 'RNAsik version'"
+
+about:
+  home: "https://monashbioinformaticsplatform.github.io/RNAsik-pipe/"
+  license: Apache 2.0
+  summary: "Another RNAseq pipeline."
