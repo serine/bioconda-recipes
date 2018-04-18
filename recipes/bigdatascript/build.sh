@@ -13,15 +13,16 @@ else
 fi
 
 GOTMP=$(mktemp -d)
-curl "https://dl.google.com/go/go${GOLANG_VERSION}.${ARCH}.tar.gz" >"${GOTMP}/go.tar.gz"
+wget -O  "${GOTMP}/go.tar.gz" "https://dl.google.com/go/go${GOLANG_VERSION}.${ARCH}.tar.gz" || \
+  curl "https://dl.google.com/go/go${GOLANG_VERSION}.${ARCH}.tar.gz" >"${GOTMP}/go.tar.gz"
 tar xvzf "${GOTMP}/go.tar.gz" -C "${GOTMP}"
 
-PATH="${PATH}:${GOTMP}/go/bin" BDS_HOME="${PREFIX}" scripts/install.sh
+PATH="${PATH}:${GOTMP}/go/bin" BDS_HOME="${PREFIX}/bds" scripts/install.sh
 
 rm -rf "${GOTMP}"
 
 mkdir -p "${PREFIX}/bin"
-mkdir -p "${PREFIX}/etc"
-mv "${PREFIX}/bds" "${PREFIX}/bin/bds"
-mv "${PREFIX}/bds.config" "${PREFIX}/etc/bds.config"
-chmod 0755 "${PREFIX}/bin/bds"
+ln -s "${PREFIX}/bds/bds" "${PREFIX}/bin/bds"
+#This is tmp hack, for RNAsik to work. It needs bds.config next to bds exec
+ln -s "${PREFIX}/bds/bds.config" "${PREFIX}/bin/bds.config"
+chmod 0755 "${PREFIX}/bds/bds"
