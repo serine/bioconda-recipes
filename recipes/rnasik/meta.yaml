@@ -1,0 +1,49 @@
+{% set version = "43c7c86" %}
+
+package:
+  name: rnasik
+  version: {{ version }}
+
+source:
+  git_rev: {{ version }}
+  git_url: https://github.com/MonashBioinformaticsPlatform/RNAsik-pipe
+
+build:
+  number: 0
+  #skip: False
+
+requirements:
+  run:
+    - bigdatascript
+    - star=2.5.2b
+    - bwa
+    - hisat2
+    - samtools=1.5.0
+    - subread=1.6.1 
+    - skewer=0.2.2
+    - bedtools=2.25.0
+    - picard=2.18.2
+    - fastqc=0.11.5
+    - je-suite
+    - multiqc=1.5
+    #- qualimap
+
+      #test:
+      #  commands:
+      #    - STAR --version
+      #- bwa |& grep Version
+      #- samtools |& grep Version
+      #- bedtools --version > $bedtools2Version"
+      #- counts -v |& sed '/^\s*$/d' > $featureCountsVersion"
+      #- fastqc --version > $fastqcVersion"
+      #- picard SortSam |& grep Version > $sortSamVersion"
+      #- picard ReorderSam |& grep Version > $reorderSamVersion"
+      #- picard MarkDuplicates |& grep Version > $markDupsVersion"
+      #- qualimap --help | grep -A 1 QualiMap > $qualimapVersion"
+      #- multiqc --version > $multiqcVersion"
+      #- python --version |& grep Python > $pythonVersion"
+
+about:
+  home: "https://monashbioinformaticsplatform.github.io/RNAsik-pipe"
+  license: Apache 2.0
+  summary: "Pipeline for processing RNAseq data"
