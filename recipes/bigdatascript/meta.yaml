@@ -10,14 +10,14 @@ source:
   md5: 65d4fc500e85ae50f9fa9b9fcf736b3a
 
 build:
-  number: 0
+  number: 1
   skip: False
 
 requirements:
   build:
     - openjdk >=8
     - ant
-    # - golang
+    - go
   run:
     - openjdk >=8
 
