@@ -9,7 +9,7 @@ source:
   git_url: https://github.com/MonashBioinformaticsPlatform/RNAsik-pipe
 
 build:
-  number: 0
+  number: 1
   #skip: False
 
 requirements:
