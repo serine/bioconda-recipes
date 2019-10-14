@@ -1,31 +1,34 @@
-{% set version = "43c7c86" %}
+{% set version = "1.5.3" %}
+{% set commit = "bf6e6c0" %}
 
 package:
   name: rnasik
   version: {{ version }}
+  #version: "1.5.2+{{ version }}"
 
 source:
   git_rev: {{ version }}
+  #git_rev: {{ commit }}
   git_url: https://github.com/MonashBioinformaticsPlatform/RNAsik-pipe
 
 build:
-  number: 1
-  #skip: False
+  number: 0
+  #string: "{{ commit }}_0"
 
 requirements:
   run:
-    - bigdatascript
-    - star=2.5.2b
-    - bwa
+    - bigdatascript=v2.0rc10
+    - star=2.6.0c
+    - bwa=0.7.17
     - hisat2
-    - samtools=1.5.0
-    - subread=1.6.1 
+    - samtools=1.8
+    - subread=1.6.2
     - skewer=0.2.2
     - bedtools=2.25.0
-    - picard=2.18.2
-    - fastqc=0.11.5
+    - picard=2.18.9
+    - fastqc=0.11.7
     - je-suite
-    - multiqc=1.5
+    - multiqc
     #- qualimap
 
       #test:
