@@ -1,16 +1,19 @@
-{% set version = "b2f27b6" %}
+{% set version = "v2.0rc10" %}
+#{% set version = "9ad04607" %}
+#this commit should include config search path
+#{% set version = "f9d5bd97" %}
 
 package:
   name: bigdatascript
   version: {{ version }}
+  #version: "v2.0+{{ version }}"
 
 source:
-  fn: BigDataScript-{{ version }}.zip
-  url: https://github.com/pcingola/BigDataScript/archive/{{ version }}.zip
-  md5: 65d4fc500e85ae50f9fa9b9fcf736b3a
+  git_rev: {{ version }}
+  git_url: https://github.com/pcingola/BigDataScript
 
 build:
-  number: 1
+  number: 0
   skip: False
 
 requirements:
