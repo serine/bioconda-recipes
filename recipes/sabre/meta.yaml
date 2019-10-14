@@ -1,0 +1,32 @@
+
+#{% set version = "321c2ff" %}
+{% set version = "e7e1865" %}
+
+package:
+  name: sabre
+  version: "mode_feat+{{ version }}"
+
+source:
+  git_rev: {{ version }}
+  git_url: https://github.com/serine/sabre
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - gcc   # [not osx]
+    - llvm  # [osx]
+    - zlib
+  run:
+    - zlib
+
+about:
+  home: https://github.com/serine/sabre
+  license: "MIT License"
+  summary: "sabre: a barcode demultiplexing and trimming tool for fastq files"
+
+  #TODO need to change exit status, current exit status is 1
+  #test:
+  #  commands:
+  #    - sabre pe
